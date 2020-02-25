@@ -3,16 +3,9 @@ Module where admin tools dashboard modules classes are defined.
 """
 
 from django.apps import apps as django_apps
-try:
-    from django.urls import reverse
-except ImportError:
-    from django.core.urlresolvers import reverse
 from django.forms.utils import flatatt
 
-from django.utils.itercompat import is_iterable
-from django.utils.text import capfirst
-from django.utils.translation import ugettext_lazy as _
-
+from admin_tools.django_compat import _
 from admin_tools.utils import AppListElementMixin, uniquify
 
 

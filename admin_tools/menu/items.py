@@ -1,10 +1,7 @@
 from django.apps import apps as django_apps
-try:
-    from django.urls import reverse
-except ImportError:
-    from django.core.urlresolvers import reverse
 from django.utils.safestring import mark_safe
-from django.utils.translation import ugettext_lazy as _
+
+from admin_tools.django_compat import _
 from admin_tools.utils import AppListElementMixin
 
 

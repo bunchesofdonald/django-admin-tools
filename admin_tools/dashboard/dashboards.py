@@ -3,19 +3,10 @@ Module where admin tools dashboard classes are defined.
 """
 
 from django.template.defaultfilters import slugify
-try:
-    from importlib import import_module
-except ImportError:
-    # Django < 1.9 and Python < 2.7
-    from django.utils.importlib import import_module
-from django.utils.translation import ugettext_lazy as _
-try:
-    from django.urls import reverse
-except ImportError:
-    from django.core.urlresolvers import reverse
-from django.utils.encoding import force_text
+from importlib import import_module
 
 from admin_tools.dashboard import modules
+from admin_tools.django_compat import _, force_str, reverse
 from admin_tools.utils import get_admin_site_name, uniquify
 
 
@@ -156,8 +147,8 @@ class AppIndexDashboard(Dashboard):
 
     Here's an example of a custom app index dashboard::
 
-        from django.core.urlresolvers import reverse
-        from django.utils.translation import ugettext_lazy as _
+        from django.urls import reverse
+        from django.utils.translation import gettext_lazy as _
         from admin_tools.dashboard import modules, AppIndexDashboard
 
         class MyAppIndexDashboard(AppIndexDashboard):
@@ -215,7 +206,7 @@ class AppIndexDashboard(Dashboard):
         """
         Internal method used to distinguish different dashboards in js code.
         """
-        return '%s-dashboard' % slugify(force_text(self.app_title))
+        return '%s-dashboard' % slugify(force_str(self.app_title))
 
 
 class DefaultIndexDashboard(Dashboard):

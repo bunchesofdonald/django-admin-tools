@@ -1,10 +1,5 @@
-from django.utils.translation import ugettext_lazy as _
-try:
-    from django.urls import reverse
-except ImportError:
-    from django.core.urlresolvers import reverse
-from admin_tools.dashboard import Dashboard, AppIndexDashboard
-from admin_tools.dashboard import modules
+from admin_tools.dashboard import Dashboard, AppIndexDashboard, modules
+from admin_tools.django_compat import _, reverse
 
 
 # to activate your index dashboard add the following to your settings.py:
